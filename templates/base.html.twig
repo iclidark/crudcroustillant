@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}CRUDcroustillant{% endblock %}</title>
+</head>
+<body>
+    {% include '_header.html.twig' %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include '_footer.html.twig' %}
+</body>
+</html>
