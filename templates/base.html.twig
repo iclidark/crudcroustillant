@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}CRUDcroustillant{% endblock %}</title>
-</head>
-<body>
-    {% include '_header.html.twig' %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        {% endblock %}
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-
-    {% include '_footer.html.twig' %}
-</body>
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        
+        {% endblock %}
+    </body>
 </html>

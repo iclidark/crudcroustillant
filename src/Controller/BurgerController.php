@@ -1,42 +1,69 @@
-<?php
+<?php 
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[Route('/burger', name: 'burger_')]
 class BurgerController extends AbstractController
 {
-    #[Route('/burgers', name: 'burger_list')]
-    public function list(): Response
+    #[Route('/liste', name: 'liste')]
+    public function liste(): Response
     {
-        return $this->render('burgers_list.html.twig', [
-            'title' => 'Liste des burgers',
+        $burgers = [
+            [
+                'id' => 1,
+                'name' => 'Cheeseburger',
+                'description' => "Un burger",
+            ],
+            [
+                'id' => 2,
+                'name' => 'Bacon Burger',
+                'description' => "Miam",
+            ],
+            [
+                'id' => 3,
+                'name' => 'Veggie Burger',
+                'description' => "Cool",
+            ],
+        ];
+ 
+        return $this->render('burger/liste_burger.html.twig', [
+            'burgers' => $burgers,
         ]);
     }
 
-    #[Route('/burger/{id}', name: 'burger_show')]
-    public function show(int $id): Response
+    #[Route('/show/{id}', name: 'detail')]
+    public function detail(int $id): Response
     {
-        // Exemple de "base de données" simulée avec un tableau associatif
         $burgers = [
-            1 => ['nom' => 'Cheese Burger', 'description' => 'Un burger classique avec fromage.'],
-            2 => ['nom' => 'Bacon Burger', 'description' => 'Un burger garni de bacon croustillant.'],
-            3 => ['nom' => 'Veggie Burger', 'description' => 'Un burger végétarien savoureux.'],
+            1 => [
+                'name' => 'Cheeseburger',
+                'description' => 'Un délicieux cheeseburger avec du cheddar fondant.',
+                'price' => 5.99,
+                'image' => 'burger.jpg'
+            ],
+            2 => [
+                'name' => 'Bacon Burger',
+                'description' => 'Burger avec bacon croustillant et sauce BBQ.',
+                'price' => 6.99,
+                'image' => 'burger.jpg'
+            ],
+            3 => [
+                'name' => 'Veggie Burger',
+                'description' => 'Burger végétarien avec galette de légumes maison.',
+                'price' => 5.49,
+                'image' => 'burger.jpg'
+            ]
         ];
 
-        // Vérification si le burger existe
-        if (!isset($burgers[$id])) {
-            return $this->render('burger_show.html.twig', [
-                'id' => $id,
-                'burger' => null,
-            ]);
-        }
+    
+        $burger = $burgers[$id];
 
-        return $this->render('burger_show.html.twig', [
-            'id' => $id,
-            'burger' => $burgers[$id],
+        return $this->render('burger/detail.html.twig', [
+            'burger' => $burger
         ]);
     }
 }
