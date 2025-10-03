@@ -2,39 +2,39 @@
 
 namespace App\Repository;
 
-use App\Entity\Pain;
+use App\Entity\Commentaire;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Pain>
+ * @extends ServiceEntityRepository<Commentaire>
  */
-class PainRepository extends ServiceEntityRepository
+class CommentaireRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Pain::class);
+        parent::__construct($registry, Commentaire::class);
     }
 
     //    /**
-    //     * @return Pain[] Returns an array of Pain objects
+    //     * @return Commentaire[] Returns an array of Commentaire objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
+    //        return $this->createQueryBuilder('c')
+    //            ->andWhere('c.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('p.id', 'ASC')
+    //            ->orderBy('c.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Pain
+    //    public function findOneBySomeField($value): ?Commentaire
     //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
+    //        return $this->createQueryBuilder('c')
+    //            ->andWhere('c.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()
